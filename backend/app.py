@@ -1,5 +1,6 @@
 from flask import Flask , request, jsonify
 from flask_cors import CORS
+from zxcvbn import zxcvbn
 
 app = Flask(__name__)
 CORS(app) #allow request from frontend
@@ -15,17 +16,28 @@ def check_password() :
 	data = request.get_json()
 	password = data.get("password","")
 
-	#dummy logic for now
-	if len(password) < 6 :
-		feedback  = "Too Short ! add more characters."
-	else :
-		feedback = "Looks okay, will improve this."
+	#using zxcvbn to check password strength
+	result = zxcvbn(password)
 
-	return jsonify({"feedback":feedback})
-
-@app.route("/ping")
-def ping():
-        return "pong"
+	score = result["score"] #0 to 4, where 0 is very weak and 4 is very strong
+	feedback = result['feedback']
+	suggestions = feedback.get("suggestions", [])
+	Warning = feedback.get("warning", "")
+	'''if score == 0:
+		feedback = "Very Weak Password. " + Warning + " " + "Suggestions: " + ", ".join(suggestions)
+	elif score == 1:
+		feedback = "Weak Password. " + Warning + " " + "Suggestions: " + ", ".join(suggestions)
+	elif score == 2:
+		feedback = "Fair Password. " + Warning + " " + "Suggestions: " + ", ".join(suggestions)
+	elif score == 3:
+		feedback = "Good Password. " + Warning + " " + "Suggestions: " + ", ".join(suggestions)
+	else:
+		feedback = "Strong Password! No suggestions needed." '''
+	
+	return jsonify({"score":score,
+				"warning": Warning,
+				"suggestions": suggestions
+	})
 
 
 if __name__ == "__main__":

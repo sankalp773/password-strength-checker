@@ -19,7 +19,11 @@ function App(){
       });
 
       const data  = await response.json();
-      setFeedback(data.feedback);
+      const { score,Warning,suggestions } = data;
+      let result = `Password Strength Score: ${score}/4\n`;
+      if (Warning) result += `Warning: ${Warning}\n`;
+      if (suggestions.length)  result += `Suggestions:\n- ${suggestions.join("\n - ")}`;
+      setFeedback(result);
     } catch(error) {
       console.error("Error:", error);
       setFeedback("Server error . please try again. "); 
@@ -47,7 +51,7 @@ function App(){
         </button>
       </form>
       <div style={{marginTop: "1rem",fontWeight: "bold"}}>
-        {feedback && <p>{feedback}</p>}
+        {feedback &&<pre>{feedback}</pre>}
       </div>
     </div>
   );
