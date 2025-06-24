@@ -1,38 +1,49 @@
-.App {
+/* App Container */
+body {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+.app-container {
+  padding: 2rem;
+  font-family:  Arial, sans-serif;
+  max-width: 1000px;
+  margin: 5rem auto;
+  background-color: #3a3939;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
   text-align: center;
+  color: #487a4d;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Password Input */
+.password-input {
+  background-color: rgb(42, 41, 41);
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Feedback */
+.feedback-box {
+  margin-top: 1rem;
+  font-weight: bold;
+  white-space: pre-line;
+  font-size: 1.2rem;
+  color: rgb(187, 166, 134);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Strength Bar */
+.strength-bar {
+  height: 15px;
+  transition: width 0.5s ease;
+  border-radius: 8px;
+  margin-top: 0.5rem;
 }

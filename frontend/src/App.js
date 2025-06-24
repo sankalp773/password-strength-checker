@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import "./App.css";
 
 
 function getColor(score) {
@@ -51,7 +52,7 @@ function App(){
 
 
   return(
-    <div style={{padding: "2rem",fontFamily: "sans-serif"}}>
+    <div className='app-container'>
       <h1>Password Strength Checker </h1>
       
         <input 
@@ -62,23 +63,17 @@ function App(){
           setPassword(e.target.value);
           checkPasswordLive(e.target.value);
         }}
-        style={{
-          padding: "0.5rem",
-          fontSize: "1rem",
-          width:"300px",
-          marginRight: "1rem",
-        }}
+        className='password-input'
         />
 
       <div style={{marginTop: "1rem",fontWeight: "bold"}}>
         {feedback && (
-          <div style={{marginTop: "1rem",fontWeight: "bold"}}>
-            <div style={{
-                height: "10px",
+          <div className= "feedback-box">
+            <pre>{feedback}</pre>
+            <div className="strength-bar"
+              style={{
                 width: `${(score+1)*20}%`,
                 backgroundColor: getColor(score),
-                transition: "width 0.5s ease",
-                borderRadius: "5px",
               }}
               ></div>
           </div>
