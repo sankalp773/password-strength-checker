@@ -36,9 +36,12 @@ function App(){
       });
 
       const data  = await response.json();
-      const { score,Warning,suggestions } = data;
+      const { score,Warning,suggestions,guess_count } = data;
 
       let result = `Password Strength Score: ${score}/4\n`;
+      if( guess_count > 0) {
+        result += `Estimated Guess Count: ${guess_count.toLocaleString()}\n`;
+      }
       if (Warning) result += `Warning: ${Warning}\n`;
       if (suggestions.length)  result += `Suggestions:\n- ${suggestions.join("\n - ")}`;
       setFeedback(result);

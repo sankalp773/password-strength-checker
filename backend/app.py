@@ -33,6 +33,7 @@ def check_password() :
 	feedback = result['feedback']
 	suggestions = feedback.get("suggestions", [])
 	Warning = feedback.get("warning", "")
+	guess_count = result["guesses"]
 	'''if score == 0:
 		feedback = "Very Weak Password. " + Warning + " " + "Suggestions: " + ", ".join(suggestions)
 	elif score == 1:
@@ -46,7 +47,8 @@ def check_password() :
 	
 	return jsonify({"score":score,
 				"warning": Warning,
-				"suggestions": suggestions
+				"suggestions": suggestions,
+				"guess_count": guess_count
 	})
 
 
