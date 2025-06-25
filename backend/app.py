@@ -1,4 +1,4 @@
-from flask import Flask , request, jsonify
+from flask import Flask , request, jsonify,render_template
 from flask_cors import CORS
 from zxcvbn import zxcvbn
 
@@ -6,13 +6,23 @@ app = Flask(__name__)
 CORS(app) #allow request from frontend
 
 @app.route("/")
-
 def home():
-	return "Welcome to the Password Strength Checker!"
+	#this is the home page
+	button = "<button onclick=\"window.location.href='/check-password'\">Check Password Strength</button>"
+	return f"<b><center>Welcome to the Password Strength Checker! You are looking at beckend<center></b>"+ button 
 
-@app.route("/check-password", methods = ["POST"])
+@app.route("/new-page")
+@app.route("/new-page/<name>") #optional parameter
+def new_page(name = None):
+	return render_template("check_password.html",person = name)
 
+
+@app.route("/check-password", methods = ["POST","GET"])
 def check_password() :
+	if request.method == "GET":
+		data = request.args
+		password = data.get("password","")	
+		return render_template("check_password.html", password=password)
 	data = request.get_json()
 	password = data.get("password","")
 

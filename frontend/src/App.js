@@ -79,6 +79,8 @@ function App(){
           </div>
         )}
       </div>
+      <img src="/logo.png"className='logo' alt="Logo" style={{ width: "150px" }} />
+
     </div>
   );
 }
