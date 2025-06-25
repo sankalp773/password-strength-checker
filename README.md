@@ -22,3 +22,17 @@ venv\Scripts\activate # Windows
 pip install -r requirements.txt
 python app.py
 ```
+
+### Frontend:
+```
+cd frontend
+npm install
+npm start
+```
+
+## Future Features:
+- Custom Password strength logic
+- Password History tracker
+- Save reports to localStorage or DB
+- Timed password check instead of checking after every click.
+- Using API to get common used passwords or passwords that appeared in a data leak.
