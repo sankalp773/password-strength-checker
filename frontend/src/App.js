@@ -27,7 +27,7 @@ function App(){
 //Send POST request to Flask Backend.
 
     try {
-      const response = await fetch ("http://localhost:5000/check-password", {
+      const response = await fetch ("{process.env.REACT_APP_API_URL}/check-password", {
         method: "POST",
         headers: {
           "content-type": "application/json",
