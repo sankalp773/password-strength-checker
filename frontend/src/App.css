@@ -38,6 +38,7 @@ h1 {
   white-space: pre-line;
   font-size: 1.2rem;
   color: rgb(187, 166, 134);
+  padding: 0.5rem;
 }
 
 /* Strength Bar */
@@ -46,4 +47,17 @@ h1 {
   transition: width 0.5s ease;
   border-radius: 8px;
   margin-top: 0.5rem;
+}
+
+/* Logo */
+.logo {
+  display: block;
+  margin: 2rem auto;
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+  padding: auto;
+
+
 }
