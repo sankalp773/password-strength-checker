@@ -38,9 +38,9 @@ function App(){
       const data  = await response.json();
       const { score,Warning,suggestions,guess_count } = data;
 
-      let result = `Password Strength Score: ${score}/4\n`;
+      let result = `1.Password Strength Score: ${score}/4\n`;
       if( guess_count > 0) {
-        result += `Estimated Guess Count: ${guess_count.toLocaleString()}\n`;
+        result += `2.Estimated Guess Count: ${guess_count.toLocaleString()}\n`;
       }
       if (Warning) result += `Warning: ${Warning}\n`;
       if (suggestions.length)  result += `Suggestions:\n- ${suggestions.join("\n - ")}`;
@@ -79,6 +79,13 @@ function App(){
                 backgroundColor: getColor(score),
               }}
               ></div>
+            <p style={{ marginTop: "0.5rem" }}>
+                {score === 0 && "Very Weak"}
+                {score === 1 && "Weak"}
+                {score === 2 && "Fair"}
+                {score === 3 && "Strong"}
+                {score === 4 && "Very Strong"}
+            </p>
           </div>
         )}
       </div>
